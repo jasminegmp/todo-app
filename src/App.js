@@ -8,22 +8,12 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			items: [],
-      newItem: '',
-      isSubmitted: false
+      newItem: ''
 		}
 
     this.addNewItem = this.addNewItem.bind(this);
     this.newItemBuffer = this.newItemBuffer.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
 
-	}
-
-	// good place to do data loading
-	//update this state
-	componentDidMount(){
-		//const todoItems = this.state.todos.map(item => <ToDoItem key={item.id} item={item} />);
-		//this.setState((state) => ({todos: todoItems}));
-		//console.log(this.state.todos);
 	}
 
 
@@ -40,9 +30,8 @@ class App extends React.Component {
       };
     });
     this.setState({newItem: ''});
-    this.setState({isSubmitted: true});
     console.log(this.state.items);
-    
+    event.preventDefault();
   }
 
   // figures out what's to be added on input update
@@ -50,27 +39,20 @@ class App extends React.Component {
     this.setState({newItem: event.target.value});  
   }
 
-  handleSubmit(){
-    console.log("hit");
-    if (this.isSubmitted === true){
-      
-      this.setState({isSubmitted:false});
-      return <ToDoItems entries = {this.state.items} />
-    }
 
-    
-  }
 
 	render(){
 		
     //<ToDoItem todos = {this.state.todos} />
 		return (
 			<div className="App">
+        <form onSubmit = {this.addNewItem}>
           <div className ="ui action input">
             <input type="text" placeholder="Enter Task..." onChange = {this.newItemBuffer} value={this.state.newItem}/>
-            <button className ="ui button" type = "submit" onClick = {this.addNewItem}>+</button>
+            <button className ="ui button" type = "submit" onClick = {this.addNewItem} >+</button>
           </div>
-        {this.handleSubmit()}
+          </form>
+        <ToDoItems entries = {this.state.items} />
      
 			</div>
 

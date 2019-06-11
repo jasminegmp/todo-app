@@ -1,14 +1,13 @@
 import React from 'react';
 
-function TodoItems(props) {
-	console.log("here");
-	return(
-	<div className = "field">
-		<div className = "ui checkbox">
-		</div>
-	</div>
-	)	
+class TodoItems extends React.Component {
 
+	render(){
+		const listItems = this.props.entries.map(item => <li key = {item.id}>{item.text}</li>);
+		return(
+			<p>{listItems}</p>
+		)
+	}
 
 }
 
