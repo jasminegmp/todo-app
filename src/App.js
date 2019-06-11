@@ -45,17 +45,6 @@ class App extends React.Component {
 
   deleteItem(id){
 
-    const doneItem = this.state.items.filter(item => {
-      return (item.id === id)
-      }
-    );
-
-    this.setState((prevState) => {
-      return { 
-        doneItems:  prevState.doneItems.concat(doneItem) 
-      };
-    });
-
     const filteredItems = this.state.items.filter(item => {
       return (item.id !== id)
       }
@@ -66,6 +55,7 @@ class App extends React.Component {
   }
 
   updateCheckedItem(id){
+
     this.setState(prevState => {
       const updatedTodo = prevState.items.map( item => {
         if (item.id === id)
@@ -79,6 +69,20 @@ class App extends React.Component {
     
       }
     })
+
+    const doneItem = this.state.items.filter(item => {
+      return (item.id === id)
+      }
+    );
+
+    this.setState((prevState) => {
+      return { 
+        doneItems:  prevState.doneItems.concat(doneItem) 
+      };
+    });
+
+    this.deleteItem(id);
+
   }
 
 
