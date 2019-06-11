@@ -19,14 +19,18 @@ class TodoItems extends React.Component {
 		const listItems = this.props.entries.map(item =>
 			<div className = "field"  key = {item.id}>
 				<div className = "ui checkbox">
-					<input type = "checkbox" onChange = {() => this.checkItem(item.id)}/>
+					<input type = "checkbox" onChange = {() => this.removeItem(item.id)}/>
 					<label className = "item" checked = {item.completed} >{item.text}</label>
 				</div>
 				<button className ="mini ui icon button" onClick={() => { this.removeItem(item.id)}}><i className ="minus circle icon"></i></button>
 			</div>
 		)
+		
 		return(
-			<div>{listItems}</div>
+			<div>
+				<div>{listItems}</div>
+				<div class="ui divider"></div>
+			</div>
 		)
 	}
 

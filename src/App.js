@@ -1,5 +1,6 @@
 import React from 'react';
 import ToDoItems from './ToDoItems';
+import DoneItems from './DoneItems';
 //import todosData from './todosData';
 
 class App extends React.Component {
@@ -8,7 +9,8 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			items: [],
-      newItem: ''
+      newItem: '',
+      doneItems: []
 		}
 
     this.addNewItem = this.addNewItem.bind(this);
@@ -42,11 +44,25 @@ class App extends React.Component {
   }
 
   deleteItem(id){
+
+    const doneItem = this.state.items.filter(item => {
+      return (item.id === id)
+      }
+    );
+
+    this.setState((prevState) => {
+      return { 
+        doneItems:  prevState.doneItems.concat(doneItem) 
+      };
+    });
+
     const filteredItems = this.state.items.filter(item => {
       return (item.id !== id)
       }
     );
     this.setState({items:filteredItems});
+
+
   }
 
   updateCheckedItem(id){
@@ -59,11 +75,10 @@ class App extends React.Component {
         return item;
       })
       return {
-        todos: updatedTodo
+        items: updatedTodo
     
       }
     })
-
   }
 
 
@@ -78,8 +93,12 @@ class App extends React.Component {
             <button className ="ui button" type = "submit" onClick = {this.addNewItem} >+</button>
           </div>
           </form>
+        <h1>To Do</h1>
         <ToDoItems entries = {this.state.items} deleteItem = {this.deleteItem} updateCheckedItem = {this.updateCheckedItem}/>
-     
+        <h1>Done</h1>
+        <DoneItems entries = {this.state.doneItems}/>
+        
+
 			</div>
 
 		);
