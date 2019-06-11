@@ -2,27 +2,24 @@ import React from 'react';
 
 class DoneItems extends React.Component {
 
-	constructor(props){
-		super(props);
+
+	removeDoneItem(id){
+		this.props.deleteDoneItem(id);
 	}
 
-	removeItem(id){
-		this.props.deleteItem(id);
-	}
-
-	checkItem(id){
-		this.props.updateCheckedItem(id);
-	}
 
 
 	render(){
+		const completedStyle = {
+			color: '#34b1ba',
+			textDecoration: "line-through",
+			fontWeight: 400
+		}
+
 		const listItems = this.props.entries.map(doneItems =>
 			<div className = "field"  key = {doneItems.id}>
-				<div className = "ui checkbox">
-					<input type = "checkbox" onChange = {() => this.removeItem(doneItems.id)}/>
-					<label className = "item" checked = {doneItems.completed} >{doneItems.text}</label>
-				</div>
-				<button className ="mini ui icon button" onClick={() => { this.removeItem(doneItems.id)}}><i className ="minus circle icon"></i></button>
+				<label className = "item" style = {completedStyle}>{doneItems.text}</label>
+				<button className ="mini ui icon button" onClick={() => { this.removeDoneItem(doneItems.id)}}><i className ="minus circle icon"></i></button>
 			</div>
 		)
 		

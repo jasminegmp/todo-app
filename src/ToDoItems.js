@@ -2,10 +2,6 @@ import React from 'react';
 
 class TodoItems extends React.Component {
 
-	constructor(props){
-		super(props);
-	}
-
 	removeItem(id){
 		this.props.deleteItem(id);
 	}
