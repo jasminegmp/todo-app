@@ -14,7 +14,7 @@ class App extends React.Component {
     this.addNewItem = this.addNewItem.bind(this);
     this.newItemBuffer = this.newItemBuffer.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.updateCheckedItem = this.updateCheckedItem.bind(this);
 
 	}
 
@@ -42,21 +42,21 @@ class App extends React.Component {
   }
 
   deleteItem(id){
-    const filteredItems = this.state.items.filter( function (item){
+    const filteredItems = this.state.items.filter(item => {
       return (item.id !== id)
       }
     );
     this.setState({items:filteredItems});
   }
 
-  handleCheckbox(id){
+  updateCheckedItem(id){
     this.setState(prevState => {
-      const updatedTodo = prevState.todos.map( todo => {
-        if (todo.id === id)
+      const updatedTodo = prevState.items.map( item => {
+        if (item.id === id)
         {
-          todo.completed = !todo.completed
+          item.completed = !item.completed
         }
-        return todo;
+        return item;
       })
       return {
         todos: updatedTodo
@@ -78,7 +78,7 @@ class App extends React.Component {
             <button className ="ui button" type = "submit" onClick = {this.addNewItem} >+</button>
           </div>
           </form>
-        <ToDoItems entries = {this.state.items} delete = {this.deleteItem} check = {this.handleCheckbox}/>
+        <ToDoItems entries = {this.state.items} deleteItem = {this.deleteItem} updateCheckedItem = {this.updateCheckedItem}/>
      
 			</div>
 
