@@ -11,6 +11,7 @@ class App extends React.Component {
       newItem: '',
       isSubmitted: false
 		}
+
     this.addNewItem = this.addNewItem.bind(this);
     this.newItemBuffer = this.newItemBuffer.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,10 +36,13 @@ class App extends React.Component {
 
     this.setState((prevState) => {
       return { 
-        items:  prevState.items.concat([newItem]) 
+        items:  prevState.items.concat(newItem) 
       };
     });
     this.setState({newItem: ''});
+    this.setState({isSubmitted: true});
+    console.log(this.state.items);
+    
   }
 
   // figures out what's to be added on input update
@@ -46,9 +50,15 @@ class App extends React.Component {
     this.setState({newItem: event.target.value});  
   }
 
-  handleSubmit(event){
-    this.setState({isSubmitted: true})
-    event.preventDefault();
+  handleSubmit(){
+    console.log("hit");
+    if (this.isSubmitted === true){
+      
+      this.setState({isSubmitted:false});
+      return <ToDoItems entries = {this.state.items} />
+    }
+
+    
   }
 
 	render(){
@@ -56,15 +66,14 @@ class App extends React.Component {
     //<ToDoItem todos = {this.state.todos} />
 		return (
 			<div className="App">
-        <form onSubmit={this.handleSubmit}>
           <div className ="ui action input">
-            <input type="text" placeholder="Enter Task..." onChange = {this.newItemBuffer}/>
-            <button className ="ui button" onClick={this.addNewItem}>+</button>
+            <input type="text" placeholder="Enter Task..." onChange = {this.newItemBuffer} value={this.state.newItem}/>
+            <button className ="ui button" type = "submit" onClick = {this.addNewItem}>+</button>
           </div>
-          
-        </form>
-        {this.state.isSubmitted && <ToDoItems items = {this.state.items}/>}
+        {this.handleSubmit()}
+     
 			</div>
+
 		);
   	}
 
