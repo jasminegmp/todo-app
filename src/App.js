@@ -24,6 +24,7 @@ class App extends React.Component {
 		
 		return (
 			<div className="App">
+				<ToDoItem todos = {this.state.todos} />
 			</div>
 		);
   	}

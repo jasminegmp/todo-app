@@ -1,10 +1,11 @@
 import React from 'react';
 
 function ToDoItem (props) {
-	console.log(props);
+	console.log(props.todos);
+	const mappedToDos = props.todos.map(todos => <div key={todos.id}>{todos.text}</div>);
 	return (
 		<div>
-			<p>{props.item.id}</p>
+			{mappedToDos}
 		</div>
 	);
 }
