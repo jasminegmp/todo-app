@@ -1,0 +1,12 @@
+body{
+    margin: 2%;
+}
+
+.ui.input>input {
+	border: 0px solid white;
+}
+
+.ui.button{
+	background: none;
+
+}

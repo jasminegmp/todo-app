@@ -11,7 +11,7 @@ class DoneItems extends React.Component {
 
 	render(){
 		const completedStyle = {
-			color: '#34b1ba',
+			color: '#999999',
 			textDecoration: "line-through",
 			fontWeight: 400
 		}
@@ -26,7 +26,6 @@ class DoneItems extends React.Component {
 		return(
 			<div>
 				<div>{listItems}</div>
-				<div class="ui divider"></div>
 			</div>
 		)
 	}

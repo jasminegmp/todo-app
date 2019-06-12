@@ -2,6 +2,9 @@ import React from 'react';
 import ToDoItems from './ToDoItems';
 import DoneItems from './DoneItems';
 import todosData from './todosData';
+import './App.css';
+
+
 
 class App extends React.Component {
 
@@ -10,7 +13,11 @@ class App extends React.Component {
 		this.state = {
 			items: [],
       newItem: '',
-      doneItems: []
+      doneItems: [],
+      weekday: new Date().getDay(),
+      month: new Date().getMonth(),
+      day: new Date().getDate(),
+      year: new Date().getFullYear()
 		}
 
     this.addNewItem = this.addNewItem.bind(this);
@@ -100,21 +107,30 @@ class App extends React.Component {
 
 
 	render(){
-		
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+      ];
+    const weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		return (
-			<div className="App">
-        <form onSubmit = {this.addNewItem}>
-          <div className ="ui action input">
-            <input type="text" placeholder="Enter Task..." onChange = {this.newItemBuffer} value={this.state.newItem}/>
-            <button className ="ui button" type = "submit" onClick = {this.addNewItem} >+</button>
-          </div>
-          </form>
-        <h1>To Do</h1>
-        <ToDoItems entries = {this.state.items} deleteItem = {this.deleteItem} updateCheckedItem = {this.updateCheckedItem}/>
-        <h1>Done</h1>
-        <DoneItems entries = {this.state.doneItems} deleteDoneItem = {this.deleteDoneItem}/>
-        
-
+			<div className="ui grid App">
+        <div className="sixteen wide column">
+          {`${weekdayNames[this.state.weekday]}` + ", " + `${this.state.day}` + " " + `${monthNames[this.state.month]}` +  " "+ +`${this.state.year}`}
+        </div>
+        <div className="sixteen wide column">
+          <h1>To Do List</h1>
+          <ToDoItems entries = {this.state.items} deleteItem = {this.deleteItem} updateCheckedItem = {this.updateCheckedItem}/>
+        </div>
+        <div className="sixteen wide column">
+          <DoneItems entries = {this.state.doneItems} deleteDoneItem = {this.deleteDoneItem}/>
+        </div>
+        <div className="sixteen wide column">
+          <form onSubmit = {this.addNewItem}>
+            <div className ="ui action input">
+              <input  type="text" placeholder="add task..." onChange = {this.newItemBuffer} value={this.state.newItem}/>
+              <button className ="ui button" type = "submit" onClick = {this.addNewItem} >+</button>
+            </div>
+            </form>
+        </div>
 			</div>
 
 		);
