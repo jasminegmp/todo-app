@@ -122,12 +122,14 @@ class App extends React.Component {
 	        
 	        <div className="sixteen wide column">
 	          <form onSubmit = {this.addNewItem}>
-	            <div className ="ui input">
-	              <input  type="text" placeholder="add task..." onChange = {this.newItemBuffer} value={this.state.newItem}/>
-	            </div>
-	            <button className ="ui circular icon button" type = "submit" onClick = {this.addNewItem} >
-	            	<i className="plus icon"></i>
-	            </button>
+            <div class="row">
+  	            <div className ="ui input">
+  	              <input  type="text" placeholder="add task..." onChange = {this.newItemBuffer} value={this.state.newItem}/>
+  	            </div>
+                <button className ="ui circular icon button" type = "submit" onClick = {this.addNewItem} >
+  	            	<i className="plus icon"></i>
+  	            </button>
+              </div>
 	            </form>
 	        </div>
 

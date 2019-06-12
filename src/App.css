@@ -1,6 +1,6 @@
 body{
     margin: 5%;
-    font-size: 40px;
+    font-size: 35px;
 }
 
 h1{
@@ -43,6 +43,6 @@ h5{
 @media screen and (max-width: 800px) {
 	body{
 	    margin: 10%;
-	    font-size: 30px;
+	    font-size: 25px;
 	}
 }
