@@ -1,9 +1,25 @@
 body{
-    margin: 2%;
+    margin: 5%;
+    font-size: 40px;
 }
+
+h1{
+	font-size: 1.5em;
+}
+
+h2{
+	font-size: 1.25em;
+}
+
+h5{
+	font-size: 0.6em;
+}
+
+
 
 .ui.input>input {
 	border: 0px solid white;
+	padding: 0;
 }
 
 .ui.circular.button{
@@ -18,4 +34,15 @@ body{
 
 .ui.grid>.column:not(.row){
 	padding-bottom: 0;
+}
+
+.field{
+	vertical-align: middle;
+}
+
+@media screen and (max-width: 800px) {
+	body{
+	    margin: 10%;
+	    font-size: 30px;
+	}
 }

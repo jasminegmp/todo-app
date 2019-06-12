@@ -113,7 +113,7 @@ class App extends React.Component {
 		return (
 		<div className="ui grid App">
 	        <div className="sixteen wide column">
-	          {`${weekdayNames[this.state.weekday]}, ${this.state.day} ${monthNames[this.state.month]} ${this.state.year}`}
+	          <h5>{`${weekdayNames[this.state.weekday]}, ${this.state.day} ${monthNames[this.state.month]} ${this.state.year}`}</h5>
 	        </div>
 	        <div className="sixteen wide column">
 	          <h1>To Do List</h1>
@@ -128,7 +128,6 @@ class App extends React.Component {
 	            <button className ="ui circular icon button" type = "submit" onClick = {this.addNewItem} >
 	            	<i className="plus icon"></i>
 	            </button>
-	            <div className="ui divider"></div>
 	            </form>
 	        </div>
 

@@ -18,8 +18,10 @@ class DoneItems extends React.Component {
 
 		const listItems = this.props.entries.map(doneItems =>
 			<div className = "field"  key = {doneItems.id}>
-				<label className = "item" style = {completedStyle}>{doneItems.text}</label>
-				<button className ="mini ui icon button" onClick={() => { this.removeDoneItem(doneItems.id)}}><i className ="minus circle icon"></i></button>
+				<h3>
+					<label className = "item" style = {completedStyle}>{doneItems.text}</label>
+					<button className ="mini ui icon button" onClick={() => { this.removeDoneItem(doneItems.id)}}><i className ="minus circle icon"></i></button>
+				</h3>
 			</div>
 		)
 		
