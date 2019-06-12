@@ -25,7 +25,6 @@ class TodoItems extends React.Component {
 		return(
 			<div>
 				<div>{listItems}</div>
-				<div class="ui divider"></div>
 			</div>
 		)
 	}

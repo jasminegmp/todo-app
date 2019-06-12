@@ -112,26 +112,33 @@ class App extends React.Component {
       ];
     const weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		return (
-			<div className="ui grid App">
-        <div className="sixteen wide column">
-          {`${weekdayNames[this.state.weekday]}` + ", " + `${this.state.day}` + " " + `${monthNames[this.state.month]}` +  " "+ +`${this.state.year}`}
-        </div>
-        <div className="sixteen wide column">
-          <h1>To Do List</h1>
-          <ToDoItems entries = {this.state.items} deleteItem = {this.deleteItem} updateCheckedItem = {this.updateCheckedItem}/>
-        </div>
-        <div className="sixteen wide column">
-          <DoneItems entries = {this.state.doneItems} deleteDoneItem = {this.deleteDoneItem}/>
-        </div>
-        <div className="sixteen wide column">
-          <form onSubmit = {this.addNewItem}>
-            <div className ="ui action input">
-              <input  type="text" placeholder="add task..." onChange = {this.newItemBuffer} value={this.state.newItem}/>
-              <button className ="ui button" type = "submit" onClick = {this.addNewItem} >+</button>
-            </div>
-            </form>
-        </div>
-			</div>
+		<div className="ui grid App">
+	        <div className="sixteen wide column">
+	          {`${weekdayNames[this.state.weekday]}` + ", " + `${this.state.day}` + " " + `${monthNames[this.state.month]}` +  " "+ +`${this.state.year}`}
+	        </div>
+	        <div className="sixteen wide column">
+	          <h1>To Do List</h1>
+	          <ToDoItems entries = {this.state.items} deleteItem = {this.deleteItem} updateCheckedItem = {this.updateCheckedItem}/>
+	        </div>
+	        
+	        <div className="sixteen wide column">
+	          <form onSubmit = {this.addNewItem}>
+	            <div className ="ui input">
+	              <input  type="text" placeholder="add task..." onChange = {this.newItemBuffer} value={this.state.newItem}/>
+	            </div>
+	            <button className ="ui circular icon button" type = "submit" onClick = {this.addNewItem} >
+	            	<i class="plus icon"></i>
+	            </button>
+	            <div class="ui divider"></div>
+	            </form>
+	        </div>
+
+			
+	        <div className="sixteen wide column">
+
+	          <DoneItems entries = {this.state.doneItems} deleteDoneItem = {this.deleteDoneItem}/>
+	        </div>
+		</div>
 
 		);
   	}

@@ -6,7 +6,16 @@ body{
 	border: 0px solid white;
 }
 
-.ui.button{
+.ui.circular.button{
 	background: none;
+	border: 1px solid #AAAAAA;
+}
 
+.ui.mini.button{
+	background: none;
+	border: none;
+}
+
+.ui.grid>.column:not(.row){
+	padding-bottom: 0;
 }
