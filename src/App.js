@@ -1,7 +1,6 @@
 import React from 'react';
 import ToDoItems from './ToDoItems';
 import DoneItems from './DoneItems';
-import todosData from './todosData';
 import './App.css';
 
 
@@ -114,7 +113,7 @@ class App extends React.Component {
 		return (
 		<div className="ui grid App">
 	        <div className="sixteen wide column">
-	          {`${weekdayNames[this.state.weekday]}` + ", " + `${this.state.day}` + " " + `${monthNames[this.state.month]}` +  " "+ +`${this.state.year}`}
+	          {`${weekdayNames[this.state.weekday]}, ${this.state.day} ${monthNames[this.state.month]} ${this.state.year}`}
 	        </div>
 	        <div className="sixteen wide column">
 	          <h1>To Do List</h1>
@@ -127,9 +126,9 @@ class App extends React.Component {
 	              <input  type="text" placeholder="add task..." onChange = {this.newItemBuffer} value={this.state.newItem}/>
 	            </div>
 	            <button className ="ui circular icon button" type = "submit" onClick = {this.addNewItem} >
-	            	<i class="plus icon"></i>
+	            	<i className="plus icon"></i>
 	            </button>
-	            <div class="ui divider"></div>
+	            <div className="ui divider"></div>
 	            </form>
 	        </div>
 
